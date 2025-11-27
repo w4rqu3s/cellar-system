@@ -14,11 +14,12 @@ return new class extends Migration
             $table->id();
 
             $table->string('nome');
-            $table->string('desc');
+            $table->string('desc')->nullable();
             $table->enum('lista', ['adega', 'desejos']);
 
             $table->year('ano');
             $table->integer('quantidade');
+            $table->float('capacidade');
             $table->float('valor');
 
             $table->string('foto')->nullable();
