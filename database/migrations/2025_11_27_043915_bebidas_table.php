@@ -15,6 +15,7 @@ return new class extends Migration
 
             $table->string('nome');
             $table->string('desc');
+            $table->enum('lista', ['adega', 'desejos']);
 
             $table->year('ano');
             $table->integer('quantidade');
