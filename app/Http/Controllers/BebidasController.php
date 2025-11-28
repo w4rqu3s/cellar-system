@@ -10,11 +10,51 @@ use App\Models\Tipo;
 
 class BebidasController extends Controller
 {
-    public function index(string $lista)
+    public function index(Request $request, string $lista)
     {
-        $bebidas = Bebida::where('lista', $lista)->get();
-        
-        return view('bebidas.index', compact(['bebidas', 'lista']));
+        $query = Bebida::query()->with('tipo');
+        $query->where('lista', $lista);
+
+        // FILTROS
+        if ($request->filled('tipo')) {
+            $query->where('tipo_id', $request->tipo);
+        }
+
+        if ($request->filled('ano')) {
+            $query->where('ano', $request->ano);
+        }
+
+        // PESQUISA
+        if ($request->filled('search')) {
+            $query->where('nome', 'like', '%' . $request->search . '%');
+        }
+
+        // ORDENAÇÃO
+        if ($request->filled('sort')) {
+            switch ($request->sort) {
+                case 'valor_asc':
+                    $query->orderBy('valor', 'asc');
+                    break;
+                case 'valor_desc':
+                    $query->orderBy('valor', 'desc');
+                    break;
+                case 'ano_asc':
+                    $query->orderBy('ano', 'asc');
+                    break;
+                case 'ano_desc':
+                    $query->orderBy('ano', 'desc');
+                    break;
+                default:
+                    $query->orderBy('nome');
+            }
+        } else {
+            $query->orderBy('nome');
+        }
+
+        $bebidas = $query->paginate(12)->withQueryString(); // mantém filtros na paginação
+        $tipos = Tipo::all();
+
+        return view('bebidas.index', compact(['bebidas', 'tipos', 'lista']));
     }
 
     public function create()

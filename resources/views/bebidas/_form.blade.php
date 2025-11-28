@@ -76,15 +76,15 @@
 <label class="form-label fw-semibold">Lista</label>
 <div class="mb-3">
     <div class="btn-group" role="group" aria-label="Lista">
-        <input type="radio" class="btn-check" name="lista" id="lista_desejos" value="desejos"
-            autocomplete="off" 
-            {{ old('lista', $bebida->lista ?? '') == 'desejos' ? 'checked' : '' }}>
-        <label class="btn btn-outline-primary" for="lista_desejos">Lista de Desejos</label>
-
         <input type="radio" class="btn-check" name="lista" id="lista_adega" value="adega"
             autocomplete="off"
             {{ old('lista', $bebida->lista ?? '') == 'adega' ? 'checked' : '' }}>
         <label class="btn btn-outline-primary" for="lista_adega">Sua Adega</label>
+
+        <input type="radio" class="btn-check" name="lista" id="lista_desejos" value="desejos"
+            autocomplete="off" 
+            {{ old('lista', $bebida->lista ?? '') == 'desejos' ? 'checked' : '' }}>
+        <label class="btn btn-outline-primary" for="lista_desejos">Lista de Desejos</label>
     </div>
 </div>
 
