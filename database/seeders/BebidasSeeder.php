@@ -18,7 +18,7 @@ class BebidasSeeder extends Seeder
             "capacidade" => 1,
             "valor" => 15,
             "user_id" => 1,
-            "tipo" => 1
+            "tipo_id" => 1
             ],
             ["nome" => "Campo Largo Tinto", 
             "lista" => "adega", 
@@ -27,7 +27,7 @@ class BebidasSeeder extends Seeder
             "capacidade" => 1,
             "valor" => 17,
             "user_id" => 1,
-            "tipo" => 1
+            "tipo_id" => 1
             ],
             ["nome" => "White Horse", 
             "lista" => "adega", 
@@ -36,7 +36,7 @@ class BebidasSeeder extends Seeder
             "capacidade" => 0.75,
             "valor" => 75,
             "user_id" => 1,
-            "tipo" => 2
+            "tipo_id" => 2
             ],
             ["nome" => "Corona", 
             "lista" => "adega", 
@@ -45,7 +45,7 @@ class BebidasSeeder extends Seeder
             "capacidade" => 0.5,
             "valor" => 10.99,
             "user_id" => 1,
-            "tipo" => 3
+            "tipo_id" => 3
             ],
             ["nome" => "Red Lable", 
             "lista" => "desejos", 
@@ -54,8 +54,10 @@ class BebidasSeeder extends Seeder
             "capacidade" => 1,
             "valor" => 100,
             "user_id" => 1,
-            "tipo" => 2
+            "tipo_id" => 2
             ],
         ];
+
+        DB::table('bebidas')->insert($data);
     }
 }

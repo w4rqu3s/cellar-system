@@ -7,10 +7,16 @@ use App\Http\Controllers\TiposController;
 use App\Http\Controllers\UsersController;
 
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', function() {
+    return view('templates.app');
+})->name('home');
+    
+Route::get('/', function() {
+    return redirect()->route('home');
 });
 
-Route::resource('/bebidas', BebidasController::class);
+Route::get('/bebidas/lista/{lista}', [BebidasController::class, 'index'])->name('bebidas.index');
+Route::resource('/bebidas', BebidasController::class)->except(['index']);
+
 Route::resource('/tipos', TiposController::class);
 Route::resource('/usuarios', UsersController::class);

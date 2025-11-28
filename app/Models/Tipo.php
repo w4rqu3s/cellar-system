@@ -12,6 +12,6 @@ class Tipo extends Model
     use SoftDeletes;
 
     public function bebidas() {
-        return $this->belongsToMany(Bebida::class);
+        return $this->hasMany(Bebida::class);
     }
 }

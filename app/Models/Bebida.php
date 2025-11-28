@@ -13,7 +13,7 @@ class Bebida extends Model
     use SoftDeletes;
 
     public function tipo() {
-        return $this->hasOne(Tipo::class);
+        return $this->belongsTo(Tipo::class);
     }
 
     public function user() {
