@@ -15,6 +15,9 @@ Route::get('/', function() {
     return redirect()->route('home');
 });
 
+Route::patch('/bebidas/{id}/mover-para-adega', [BebidasController::class, 'moverParaAdega'])
+    ->name('bebidas.moverParaAdega');
+
 Route::get('/bebidas/lista/{lista}', [BebidasController::class, 'index'])->name('bebidas.index');
 Route::resource('/bebidas', BebidasController::class)->except(['index']);
 

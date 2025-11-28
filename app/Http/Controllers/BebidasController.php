@@ -151,4 +151,18 @@ class BebidasController extends Controller
             return redirect()->route('bebidas.index', $lista);
         }
     }
+
+    public function moverParaAdega($id)
+    {
+        $bebida = Bebida::findOrFail($id);
+
+        if(isset($bebida)) {
+            $bebida->lista = 'adega';
+            $bebida->save();
+
+            // return redirect()->back()->with('success', 'Bebida movida para a adega.');
+            return redirect()->route('bebidas.show', $bebida->id);
+        }
+    }
+
 }

@@ -21,7 +21,6 @@
     <main>
         @yield('content', 'WELCOME')
     </main>
-
-    {{-- Scripts? --}}
+    
 </body>
 </html>
