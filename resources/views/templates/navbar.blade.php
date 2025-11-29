@@ -9,17 +9,20 @@
         </ul>
 
         {{-- Switch centralizado --}}
-        <div class="position-absolute start-50 translate-middle-x">
-            <div class="btn-group" role="group" aria-label="Lista Toggle">
-                <a href="{{ route('bebidas.index', 'adega') }}"
-                   class="btn {{ request()->route('lista') == 'adega' ? 'btn-light text-primary' : 'btn-outline-light' }}">
-                    Sua Adega
-                </a>
-                <a href="{{ route('bebidas.index', 'desejos') }}"
-                   class="btn {{ request()->route('lista') == 'desejos' ? 'btn-light text-primary' : 'btn-outline-light' }}">
-                    Lista de Desejos
-                </a>
+        <div class="container">
+            <div class="position-absolute start-50 translate-middle-x">
+                <div class="btn-group" role="group" aria-label="Lista Toggle">
+                    <a href="{{ route('bebidas.index', 'adega') }}"
+                    class="btn {{ request()->route('lista') == 'adega' ? 'btn-light text-primary' : 'btn-outline-light' }}">
+                        Sua Adega
+                    </a>
+                    <a href="{{ route('bebidas.index', 'desejos') }}"
+                    class="btn {{ request()->route('lista') == 'desejos' ? 'btn-light text-primary' : 'btn-outline-light' }}">
+                        Lista de Desejos
+                    </a>
+                </div>
             </div>
+            <a href="{{ route('dashboard.index') }}" class="btn">Dashboard</a>
         </div>
 
         {{-- Bloco direito: outros links --}}
