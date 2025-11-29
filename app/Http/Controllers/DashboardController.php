@@ -10,20 +10,20 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data = $this->getData();
+        $data = $this->getViewData();
 
         return view('dashboard.index', compact('data'));
     }
 
     public function report() {
-        $data = $this->getData();
+        $data = $this->getViewData();
 
         $pdf = Pdf::loadView('dashboard.report', compact('data'));
 
         return $pdf->stream('dashboard_adega.pdf'); 
     }
 
-    private function getData() {
+    private function getViewData() {
         $data = ['valorTotal' => 0, 'litrosTotal' => 0];
 
         $bebidas = Bebida::where('lista', 'adega')->with('tipo')->get();
