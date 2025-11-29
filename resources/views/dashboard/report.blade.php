@@ -108,15 +108,15 @@
     <tbody>
         <tr>
             <td class="label">Valor Total</td>
-            <td>R$ {{ number_format($valorTotal, 2, ',', '.') }}</td>
+            <td>R$ {{ number_format($data['valorTotal'], 2, ',', '.') }}</td>
         </tr>
         <tr>
             <td class="label">Quantidade de Garrafas</td>
-            <td>{{ $quantidadeTotal }}</td>
+            <td>{{ $data['quantidadeTotal'] }}</td>
         </tr>
         <tr>
             <td class="label">Capacidade Total</td>
-            <td>{{ number_format($litrosTotal, 2, ',', '.') }} L</td>
+            <td>{{ number_format($data['litrosTotal'], 2, ',', '.') }} L</td>
         </tr>
     </tbody>
 </table>
@@ -135,7 +135,7 @@
     </thead>
     <tbody>
         @php $posicao = 1; @endphp
-        @foreach ($topCaras as $bebida)
+        @foreach ($data['topCaras'] as $bebida)
         <tr>
             <td style="text-align:center;">{{ $posicao }}</td>
             <td>{{ $bebida->nome }}</td>
@@ -150,25 +150,6 @@
             </td>
         </tr>
         @php $posicao++; @endphp
-        @endforeach
-    </tbody>
-</table>
-
-{{-- Quantidade por tipo --}}
-<div class="section-title">Quantidade por Tipo</div>
-<table class="info-table">
-    <thead>
-        <tr>
-            <th>Tipo</th>
-            <th>Quantidade</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($tiposQuantidade as $tipo => $qtd)
-        <tr>
-            <td>{{ $tipo }}</td>
-            <td style="text-align:right;">{{ $qtd }}</td>
-        </tr>
         @endforeach
     </tbody>
 </table>

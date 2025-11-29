@@ -8,11 +8,12 @@
     <div class="card">
         <div class="card-body">
 
-            <form action="{{ route('tipos.update', $aluno->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('tipos.update', $tipo->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                @include('tipos._form')
+                @php $foto_required = false; @endphp
+                @include('tipos._form', compact('foto_required'))
 
                 <button class="btn btn-primary">Atualizar</button>
 

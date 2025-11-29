@@ -53,7 +53,7 @@ class TiposController extends Controller
         $tipo = Tipo::find($id);
         
         if(isset($tipo)) {
-            return view('tipos.show', compact('tipo'));
+            return view('tipos.edit', compact('tipo'));
         }
     }
 

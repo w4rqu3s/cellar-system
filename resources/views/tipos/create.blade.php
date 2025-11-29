@@ -11,7 +11,8 @@
             <form action="{{ route('tipos.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                @include('tipos._form')
+                @php $foto_required = true; @endphp
+                @include('tipos._form', compact('foto_required'))
 
                 <button class="btn btn-success">Salvar</button>
 

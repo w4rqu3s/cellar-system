@@ -21,7 +21,7 @@
                 <div class="card shadow-lg rounded-4 border-0 p-4"
                     style="background: linear-gradient(135deg, #355C7D, #6C5B7B, #C06C84); color:white">
                     <h5 class="mb-2"><i class="bi bi-cash-coin"></i> Valor Total</h5>
-                    <h2 class="fw-bold">R$ {{ number_format($valorTotal, 2, ',', '.') }}</h2>
+                    <h2 class="fw-bold">R$ {{ number_format($data['valorTotal'], 2, ',', '.') }}</h2>
                 </div>
             </div>
 
@@ -29,7 +29,7 @@
                 <div class="card shadow-lg rounded-4 border-0 p-4"
                     style="background: linear-gradient(135deg, #11998e, #38ef7d); color:white">
                     <h5 class="mb-2"><i class="bi bi-collection"></i> Garrafas</h5>
-                    <h2 class="fw-bold">{{ $quantidadeTotal }}</h2>
+                    <h2 class="fw-bold">{{ $data['quantidadeTotal'] }}</h2>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                 <div class="card shadow-lg rounded-4 border-0 p-4"
                     style="background: linear-gradient(135deg, #396afc, #2948ff); color:white">
                     <h5 class="mb-2"><i class="bi bi-droplet-half"></i> Capacidade Total</h5>
-                    <h2 class="fw-bold">{{ number_format($litrosTotal, 2, ',', '.') }} L</h2>
+                    <h2 class="fw-bold">{{ number_format($data['litrosTotal'], 2, ',', '.') }} L</h2>
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                 <div class="row g-3">
 
                     @php $posicao = 1; @endphp
-                    @foreach ($topCaras as $bebida)
+                    @foreach ($data['topCaras'] as $bebida)
                         <div class="col-md-4">
                             <div class="card shadow-sm rounded-4 border-0 p-3 d-flex flex-row align-items-center clickable-card"
                                 style="background: #f8f9fa" data-url="{{ route('bebidas.show', $bebida->id) }}">
@@ -123,8 +123,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        const tiposQuantidade = @json($tiposQuantidade);
-        const tiposValor = @json($tiposValor);
+        const tiposQuantidade = @json($data['tiposQuantidade']);
 
         new Chart(document.getElementById('graficoTiposQuantidade'), {
             type: 'pie',

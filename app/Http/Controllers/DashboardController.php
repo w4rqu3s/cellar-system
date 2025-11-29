@@ -10,51 +10,33 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $bebidas = Bebida::where('lista', 'adega')->with('tipo')->get();
+        $data = $this->getData();
 
-        $valorTotal = $bebidas->sum('valor');
-        $quantidadeTotal = $bebidas->sum('quantidade');
-        $litrosTotal = $bebidas->sum('capacidade');
-
-        // TOP 5 mais caras
-        $topCaras = $bebidas->sortByDesc('valor')->take(5); // testar display de outras quantidades
-
-        $tiposQuantidade = $bebidas->groupBy('tipo.nome')->map->count();
-
-        $tiposValor = $bebidas->groupBy('tipo.nome')->map(fn ($item) => $item->sum('valor'));
-
-        return view('dashboard.index', compact(
-            'valorTotal',
-            'quantidadeTotal',
-            'litrosTotal',
-            'topCaras',
-            'tiposQuantidade',
-            'tiposValor'
-        ));
+        return view('dashboard.index', compact('data'));
     }
 
     public function report() {
-        $bebidas = Bebida::where('lista', 'adega')->with('tipo')->get();
+        $data = $this->getData();
 
-        $valorTotal = $bebidas->sum('valor');
-        $quantidadeTotal = $bebidas->sum('quantidade');
-        $litrosTotal = $bebidas->sum('capacidade');
-
-        // TOP 5 mais caras
-        $topCaras = $bebidas->sortByDesc('valor')->take(5); // testar display de outras quantidades
-
-        $tiposQuantidade = $bebidas->groupBy('tipo.nome')->map->count();
-
-        // $tiposValor = $bebidas->groupBy('tipo.nome')->map(fn ($item) => $item->sum('valor'));
-
-        $pdf = Pdf::loadView('dashboard.report', compact(
-            'valorTotal',
-            'quantidadeTotal',
-            'litrosTotal',
-            'topCaras',
-            'tiposQuantidade',
-        ));
+        $pdf = Pdf::loadView('dashboard.report', compact('data'));
 
         return $pdf->stream('dashboard_adega.pdf'); 
+    }
+
+    private function getData() {
+        $data = ['valorTotal' => 0, 'litrosTotal' => 0];
+
+        $bebidas = Bebida::where('lista', 'adega')->with('tipo')->get();
+
+        foreach($bebidas as $bebida) {
+            $data['valorTotal'] += ($bebida->valor * $bebida->quantidade);
+            $data['litrosTotal'] += ($bebida->capacidade * $bebida->quantidade);
+        }
+
+        $data['quantidadeTotal'] = $bebidas->sum('quantidade');
+        $data['topCaras'] = $bebidas->sortByDesc('valor')->take(5); // testar display de outras quantidades
+        $data['tiposQuantidade'] = $bebidas->groupBy('tipo.nome')->map->count();
+
+        return $data;
     }
 }

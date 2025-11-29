@@ -33,6 +33,8 @@
         name="foto"
         class="form-control"
         accept="image/*"
-        required
+        @if ($foto_required)
+            required
+        @endif
     >
 </div>
