@@ -43,7 +43,13 @@
                         <li><span class="fw-semibold">Ano:</span> {{ $bebida->ano }}</li>
                         <li><span class="fw-semibold">Quantidade:</span> {{ $bebida->quantidade }}</li>
                         <li><span class="fw-semibold">
-                                Capacidade:</span> {{ $bebida->capacidade }} {{ $bebida->capacidade < 1 ? 'ml' : 'L' }}
+                                Capacidade:
+                            </span>
+                            @if ($bebida->capacidade < 1)
+                                {{ $bebida->capacidade * 1000 }} ml
+                            @else
+                                {{ $bebida->capacidade }} L
+                            @endif
                         </li>
                         <li><span class="fw-semibold">Valor:</span> R$ {{ number_format($bebida->valor, 2, ',', '.') }}
                         </li>

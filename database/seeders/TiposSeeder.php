@@ -16,9 +16,9 @@ class TiposSeeder extends Seeder
         Storage::disk('public')->makeDirectory('fotos');
 
         $fotos = [
-            database_path('seeders/fotos/Vinho.png'),
-            database_path('seeders/fotos/Whisky.png'),
-            database_path('seeders/fotos/Cerveja.png')
+            database_path('seeders/fotos/tipos/Vinho.png'),
+            database_path('seeders/fotos/tipos/Whisky.png'),
+            database_path('seeders/fotos/tipos/Cerveja.png')
         ];
 
         $data = [

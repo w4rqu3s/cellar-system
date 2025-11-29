@@ -86,11 +86,7 @@
 
                             <ul class="list-unstyled small text-secondary mb-0">
                                 <li><span class="fw-semibold">Tipo:</span> {{ $bebida->tipo->nome }}</li>
-                                <li><span class="fw-semibold">Ano:</span> {{ $bebida->ano }}</li>
                                 <li><span class="fw-semibold">Quantidade:</span> {{ $bebida->quantidade }}</li>
-                                <li><span class="fw-semibold">Capacidade:</span> {{ $bebida->capacidade }} ml</li>
-                                <li><span class="fw-semibold">Valor:</span> R$
-                                    {{ number_format($bebida->valor, 2, ',', '.') }}</li>
                             </ul>
 
                         </div>
