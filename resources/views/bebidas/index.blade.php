@@ -63,17 +63,15 @@
 
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
 
-            @foreach ($bebidas as $bebida)
+            @forelse($bebidas as $bebida)
                 <div class="col">
                     <div class="card h-100 shadow-sm border-0 rounded-3">
 
-                        {{-- Imagem do card --}}
                         <div class="ratio ratio-4x3 overflow-hidden rounded-top">
                             <img src="{{ $bebida->foto ? asset('storage/' . $bebida->foto) : asset('storage/' . $bebida->tipo->foto) }}"
                                 class="w-100 h-100 object-fit-cover" alt="Foto da bebida" style="object-fit: cover;">
                         </div>
 
-                        {{-- Corpo do card --}}
                         <div class="card-body">
 
                             <h5 class="card-title fw-bold text-dark">
@@ -97,7 +95,6 @@
 
                         </div>
 
-                        {{-- Rodapé --}}
                         <div class="card-footer bg-white border-0 pb-3">
                             <a href="{{ route('bebidas.show', $bebida->id) }}" class="btn btn-outline-primary w-100">
                                 Detalhes
@@ -106,7 +103,11 @@
 
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <td colspan="4" class="text-center py-4 text-muted">
+                    Ainda não há bebidas!
+                </td>
+            @endforelse
 
         </div>
 

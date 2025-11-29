@@ -95,7 +95,9 @@ class BebidasController extends Controller
     {
         $bebida = Bebida::find($id);
 
-        return view('bebidas.show', compact('bebida'));
+        if(isset($bebida)) {
+            return view('bebidas.show', compact('bebida'));
+        }
     }
 
     public function edit(string $id)

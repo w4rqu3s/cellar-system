@@ -1,0 +1,27 @@
+@extends('templates.app')
+
+@section('title', 'Editar Tipo')
+
+@section('content')
+    <h1 class="h3 mb-4">Editar Tipo</h1>
+
+    <div class="card">
+        <div class="card-body">
+
+            <form action="{{ route('tipos.update', $aluno->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                @include('tipos._form')
+
+                <button class="btn btn-primary">Atualizar</button>
+
+                <a href="{{ url()->previous() }}" class="btn btn-secondary ms-2">
+                    Voltar
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+@endsection
