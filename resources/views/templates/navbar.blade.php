@@ -2,7 +2,7 @@
     <div class="container">
 
         {{-- HOME ESQUERDA --}}
-        <a class="navbar-brand fw-bold" href="{{ url('/') }}">
+        <a class="navbar-brand fw-bold" href="{{ url('/home') }}">
             Adega App
         </a>
 

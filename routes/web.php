@@ -9,11 +9,11 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
-    return redirect()->route('home');
+    return view('welcome');
 });
 
 Route::get('/home', function() {
-    return view('templates.app');
+    return view('home');
 })->name('home')->middleware(['auth', 'verified']);
 
 Route::get('/dashboard-adega', [DashboardController::class, 'index'])->name('dashboard.index')
