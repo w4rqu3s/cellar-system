@@ -11,7 +11,7 @@
 
             <div class="card shadow-sm p-4">
 
-                <form action="{{ route('bebidas.update', $bebida->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('bebidas.update', $bebida->id) }}" method="POST" onsubmit="return confirm('Confirmar Alterações?');" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

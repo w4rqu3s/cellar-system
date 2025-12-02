@@ -34,9 +34,9 @@
                     @endcan
                     
                     @can('delete', $tipo)
-                        <form action="{{ route('tipos.destroy', $tipo->id) }}" method="POST">
+                        <form action="{{ route('tipos.destroy', $tipo->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar esse tipo?');">
                             @csrf @method('DELETE')
-                            <button class="btn btn-danger">
+                            <button @if(count($tipo->bebidas) >= 1) disabled @endif class="btn btn-danger">
                                 Excluir
                             </button>
                         </form>

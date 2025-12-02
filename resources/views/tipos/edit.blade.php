@@ -9,7 +9,7 @@
 <div class="card p-4 shadow-sm">
 
     @can('update', $tipo)
-        <form action="{{ route('tipos.update', $tipo->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('tipos.update', $tipo->id) }}" method="POST" onsubmit="return confirm('Confirmar Alterações?');" enctype="multipart/form-data" >
             @csrf
             @method('PUT')
 

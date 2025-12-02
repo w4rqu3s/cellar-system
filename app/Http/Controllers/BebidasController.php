@@ -48,7 +48,8 @@ class BebidasController extends Controller
 
         $user = Auth::user();
         
-        $bebida = $this->criarBebida($request, $user);
+        $bebida = new Bebida();
+        $bebida = $this->criarBebida($request, $user, $bebida);
 
         $bebida->save();
 
@@ -87,8 +88,9 @@ class BebidasController extends Controller
 
         if(isset($bebida)) {
 
-            $bebida = $this->criarBebida($request, $user);
-
+            $lista = $bebida->lista;
+            $bebida = $this->criarBebida($request, $user, $bebida);
+            $bebida->lista = $lista;
             $bebida->save();
 
             return view('bebidas.show', compact('bebida'));
@@ -168,9 +170,8 @@ class BebidasController extends Controller
         return $query;
     }
 
-    private function criarBebida(Request $request, User $user) {
-        $bebida = new Bebida();
-
+    private function criarBebida(Request $request, User $user, Bebida $bebida) {
+        
         $bebida->nome = $request->nome;
         isset($request->desc) ? $bebida->desc = $request->desc : null;
         $bebida->lista = $request->lista;

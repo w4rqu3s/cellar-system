@@ -20,7 +20,7 @@
 
                 <div class="d-flex gap-2 mt-4">                
                     @can('ban', $user)
-                        <form action="{{ route('usuarios.ban', $user->id) }}" method="POST">
+                        <form action="{{ route('usuarios.ban', $user->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja banir {{ $user->name }}?');">
                             @csrf @method('DELETE')
                             <button class="btn btn-danger">
                                 Banir

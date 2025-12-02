@@ -47,14 +47,17 @@
 
                     @can('moverParaAdega', $bebida)
                         @if ($bebida->lista === "desejos")    
-                            <a href="{{ route('bebidas.moverParaAdega', $bebida->id) }}" class="btn btn-warning">
+                            <form action="{{ route('bebidas.moverParaAdega', $bebida->id) }}" method="POST" onsubmit="return confirm('Confirmar Alteração?');">
+                            @csrf @method('PATCH')
+                            <button class="btn btn-warning">
                                 Mover à Adega
-                            </a>
+                            </button>
+                        </form>
                         @endif
                     @endcan
                     
                     @can('delete', $bebida)
-                        <form action="{{ route('bebidas.destroy', $bebida->id) }}" method="POST">
+                        <form action="{{ route('bebidas.destroy', $bebida->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar {{ $bebida->nome }}?');">
                             @csrf @method('DELETE')
                             <button class="btn btn-danger">
                                 Excluir
