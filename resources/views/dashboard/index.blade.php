@@ -149,26 +149,6 @@
         background: var(--rosa-clarissimo) !important;
         transform: translateY(-3px);
     }
-
-
-    /* MODO ESCURO */
-    body.dark {
-        background: var(--dark-bg) !important;
-        color: var(--dark-text) !important;
-    }
-
-    body.dark .card {
-        background: var(--dark-card) !important;
-        color: var(--dark-text) !important;
-    }
-
-    body.dark .clickable-card {
-        border-left-color: var(--rosa);
-    }
-
-    body.dark .clickable-card:hover {
-        background: #3a2a2a !important;
-    }
 </style>
 
 

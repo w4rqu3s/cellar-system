@@ -33,6 +33,8 @@ Route::resource('/tipos', TiposController::class)
     ->middleware(['auth', 'verified']);
 Route::resource('/usuarios', UsersController::class)
     ->middleware(['auth', 'verified']);
+Route::delete('/usuarios/{id}/ban', [UsersController::class, 'ban'])->name('usuarios.ban')
+    ->middleware(['auth', 'verified']);
 
 // Breeze
 
