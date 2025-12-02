@@ -21,11 +21,7 @@ class TiposSeeder extends Seeder
             database_path('seeders/fotos/tipos/Cerveja.png')
         ];
 
-        $data = [
-            ["nome" => "Vinho", "desc" => "Bebida fertilizada do vinho.", "created_at" => now(), "updated_at" => now()],
-            ["nome" => "Uísque", "desc" => "Famoso destilado escocês.", "created_at" => now(), "updated_at" => now()],
-            ["nome" => "Cerveja", "desc" => "Provavelmente a mais consumida das formas de álcool.", "created_at" => now(), "updated_at" => now()]
-        ];
+        $data = require database_path('data/tipos.php');
 
         foreach($data as &$tipo) {
             $foto_ord = array_shift($fotos);

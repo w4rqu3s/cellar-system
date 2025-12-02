@@ -1,0 +1,77 @@
+<?php
+
+return [
+
+        // 1 - Victor
+            ["nome" => "Campo Largo Suave", 
+            "desc" => "Vinho barato.", 
+            "lista" => "adega", 
+            "ano" => 2025,
+            "quantidade" => 1,
+            "capacidade" => 0.75,
+            "valor" => 13.20,
+            "user_id" => 1,
+            "tipo_id" => 1
+            ],
+            ["nome" => "Campo Largo Seco", 
+            "desc" => "Difícil de apreciar.", 
+            "lista" => "adega", 
+            "ano" => 2025,
+            "quantidade" => 2,
+            "capacidade" => 0.75,
+            "valor" => 13.20,
+            "user_id" => 1,
+            "tipo_id" => 1
+            ],
+            ["nome" => "White Horse", 
+            "desc" => null, 
+            "lista" => "adega", 
+            "ano" => 2019,
+            "quantidade" => 1,
+            "capacidade" => 1,
+            "valor" => 60,
+            "user_id" => 1,
+            "tipo_id" => 2
+            ],
+            ["nome" => "Corona Extra Long Neck", 
+            "desc" => "Ainda mais perfeito com uma fatia de limão.", 
+            "lista" => "adega", 
+            "ano" => 2025,
+            "quantidade" => 6,
+            "capacidade" => 0.35,
+            "valor" => 7.49,
+            "user_id" => 1,
+            "tipo_id" => 3
+            ],
+            ["nome" => "Red Label", 
+            "desc" => "Caro, mas vale a pena.", 
+            "lista" => "desejos", 
+            "ano" => 2024,
+            "quantidade" => 1,
+            "capacidade" => 1,
+            "valor" => 100,
+            "user_id" => 1,
+            "tipo_id" => 2
+            ],
+        // 4 - Admin
+            ["nome" => "Budwiser Litrão", 
+            "desc" => "",
+            "lista" => "adega", 
+            "ano" => 2020,
+            "quantidade" => 1,
+            "capacidade" => 1,
+            "valor" => 20,
+            "user_id" => 4,
+            "tipo_id" => 3
+            ],
+            ["nome" => "Black & White", 
+            "desc" => "Escocês",
+            "lista" => "desejos", 
+            "ano" => 2025,
+            "quantidade" => 1,
+            "capacidade" => 1,
+            "valor" => 100,
+            "user_id" => 4,
+            "tipo_id" => 2
+            ],
+        ];
