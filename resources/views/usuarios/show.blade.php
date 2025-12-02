@@ -1,36 +1,44 @@
 @extends('templates.app')
-
 @section('title', $user->name)
 
 @section('content')
 
-    <div class="container py-4">
+<div class="container" style="max-width: 850px;">
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="h3 m-0">{{ $user->name }}</h1>
-            <div>
-                <a href="{{ url()->previous() }}" class="btn btn-secondary">Voltar</a>
+    <div class="card shadow-sm p-4">
+
+        <div class="row g-4">
+
+            <div class="col-md-7">
+                <h2 class="fw-bold text-pink mb-2">{{ $user->name }}</h2>
+                
+                <p class="fs-5 fw-semibold">{{ $user->email }}</p>
+
+                <p class="text-muted mb-1"><strong>ID:</strong> {{ $user->id }}</p>
+                <p class="text-muted mb-1"><strong>Criado Em:</strong> {{ $user->created_at }}</p>
+                <p class="text-muted mb-1"><strong>Última Atualização:</strong> {{ $user->updated_at }}</p>
+
+                <div class="d-flex gap-2 mt-4">                
+                    @can('ban', $user)
+                        <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
+                            @csrf @method('DELETE')
+                            <button class="btn btn-danger">
+                                Banir
+                            </button>
+                        </form>
+                    @endcan
+
+                    @can('viewAny', App\Models\User::class)
+                        <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">
+                            Voltar
+                        </a>
+                    @endcan
+                </div>
             </div>
+
         </div>
-
-        <div class="card shadow-sm rounded-4 border border-secondary p-3 h-100">
-
-            <ul class="list-unstyled mb-3">
-                <li><span class="fw-semibold">ID:</span> {{ $user->id }}</li>
-                <li><span class="fw-semibold">Nome:</span> {{ $user->name }}</li>
-                <li><span class="fw-semibold">Email:</span> {{ $user->email }}</li>
-                <li><span class="fw-semibold">Criado em:</span> {{ $user->created_at }}</li>
-                <li><span class="fw-semibold">Última Edição:</span> {{ $user->updated_at }}</li>
-            </ul>
-
-            @can('viewAny', App\Models\User::class)
-            <a href="{{ route('usuarios.index') }}" class="btn btn-outline-primary mt-3">
-                Voltar para lista
-            </a>
-            @endcan
-        </div>
-
 
     </div>
 
+</div>
 @endsection

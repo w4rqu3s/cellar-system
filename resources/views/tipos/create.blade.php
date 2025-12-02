@@ -3,26 +3,22 @@
 @section('title', 'Cadastrar Tipo')
 
 @section('content')
-    <h1 class="h3 mb-4">Cadastrar Novo Tipo</h1>
 
-    <div class="card">
-        <div class="card-body">
-            @can('create', App\Models\Tipo::class)
-            <form action="{{ route('tipos.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+<h1 class="h3 mb-4 fw-bold">Cadastrar Tipo</h1>
 
-                @php $foto_required = true; @endphp
-                @include('tipos._form', compact('foto_required'))
+<div class="card p-4 shadow-sm">
+    @can('create', App\Models\Tipo::class)
+        <form action="{{ route('tipos.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
 
-                <button class="btn btn-success">Salvar</button>
+            @php $foto_required = true; @endphp
+            @include('tipos._form', compact('foto_required'))
 
-                <a href="{{ url()->previous() }}" class="btn btn-secondary ms-2">
-                    Voltar
-                </a>
+            <button class="btn btn-primary">Salvar</button>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary ms-2">Voltar</a>
 
-            </form>
-            @endcan
+        </form>
+    @endcan
+</div>
 
-        </div>
-    </div>
 @endsection

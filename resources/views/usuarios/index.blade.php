@@ -4,54 +4,50 @@
 
 @section('content')
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h3">Usuários</h1>
-    </div>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 fw-bold">Usuários</h1>
+</div>
 
-    <div class="card">
-        <div class="card-body p-0">
+<div class="card shadow-sm">
+    <div class="card-body p-0">
 
-            <table class="table table-striped table-hover align-middle m-0">
-                <thead class="table-dark">
+        <table class="table table-striped table-hover align-middle m-0">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th class="text-center" style="width: 120px;"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @forelse ($users as $user)
                     <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th class="text-center"></th>
+                        <td class="fw-semibold">{{ $user->name }}</td>
+
+                        @can('view', $user)    
+                        <td class="text-center">
+                            <a 
+                                href="{{ route('usuarios.show', $user->id) }}" 
+                                class="btn btn-sm btn-outline-primary"
+                            >
+                                Ver
+                            </a>
+                        </td>
+                        @endcan
                     </tr>
-                </thead>
 
-                <tbody>
-                    @forelse ($users as $user)
-                        <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
+                @empty
+                    <tr>
+                        <td colspan="4" class="text-center py-4 text-muted">
+                            Nenhum usuário cadastrado ainda.
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
 
-                            @can('view', $user)
-                            <td class="text-center">
-                                <a 
-                                    href="{{ route('usuarios.show', $user->id) }}" 
-                                    class="btn btn-sm btn-secondary"
-                                >
-                                    Acessar
-                                </a>
-                            </td>
-                            @endcan
-                        </tr>
+        </table>
 
-                    @empty
-                        <tr>
-                            <td colspan="4" class="text-center py-4 text-muted">
-                                Nenhum Usuário cadastrado.
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-
-            </table>
-
-        </div>
     </div>
+</div>
 
 @endsection

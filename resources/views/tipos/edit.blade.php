@@ -3,28 +3,24 @@
 @section('title', 'Editar Tipo')
 
 @section('content')
-    <h1 class="h3 mb-4">Editar Tipo</h1>
 
-    <div class="card">
-        <div class="card-body">
+<h1 class="h3 mb-4 fw-bold">Editar Tipo</h1>
 
-            @can('update', $tipo)
-            <form action="{{ route('tipos.update', $tipo->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
+<div class="card p-4 shadow-sm">
 
-                @php $foto_required = false; @endphp
-                @include('tipos._form', compact('foto_required'))
+    @can('update', $tipo)
+        <form action="{{ route('tipos.update', $tipo->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
-                <button class="btn btn-primary">Atualizar</button>
+            @php $foto_required = false; @endphp
+            @include('tipos._form', compact('foto_required'))
 
-                <a href="{{ url()->previous() }}" class="btn btn-secondary ms-2">
-                    Voltar
-                </a>
+            <button class="btn btn-primary">Atualizar</button>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary ms-2">Voltar</a>
+        </form>
+    @endcan
 
-            </form>
-            @endcan
+</div>
 
-        </div>
-    </div>
 @endsection

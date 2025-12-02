@@ -14,14 +14,12 @@
 {{-- Descrição --}}
 <div class="mb-3">
     <label for="desc" class="form-label">Descrição (opcional)</label>
-    <input 
-        type="text" 
+    <textarea 
         id="desc" 
-        name="desc" 
-        value="{{ old('desc', $tipo->desc ?? '') }}"
+        name="desc"
+        rows="3"
         class="form-control"
-        required
-    >
+    >{{ old('desc', $tipo->desc ?? '') }}</textarea>
 </div>
 
 {{-- Foto --}}
@@ -33,8 +31,6 @@
         name="foto"
         class="form-control"
         accept="image/*"
-        @if ($foto_required)
-            required
-        @endif
+        @if ($foto_required) required @endif
     >
 </div>

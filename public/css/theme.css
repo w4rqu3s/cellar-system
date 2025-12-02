@@ -11,6 +11,66 @@
     --dark-text: #e5e5e5;
 }
 
+/* ===== CARDS PADRONIZADOS ===== */
+.card {
+    border-radius: 14px !important;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+}
+
+.dark-mode .card {
+    background-color: #1e1e1e !important;
+    border-color: #444 !important;
+}
+
+/* ===== TABELAS PADRÃO ===== */
+.table thead {
+    background-color: #e83e8c !important;
+    color: #fff;
+}
+
+.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2a2a2a !important;
+}
+
+/* ===== BOTÕES ROSA ===== */
+.btn-outline-primary,
+.btn-primary {
+    border-color: #e83e8c !important;
+    color: #e83e8c !important;
+}
+
+.btn-primary,
+.btn-outline-primary:hover,
+.btn-primary:hover {
+    background-color: #e83e8c !important;
+    color: #fff !important;
+    border-color: #e83e8c !important;
+}
+
+/* ===== BOTOES DE AÇÃO ===== */
+.btn-warning {
+    background-color: #ffbb33 !important;
+    color: #000 !important;
+}
+
+.btn-danger {
+    background-color: #ff4444 !important;
+    border-color: #ff4444 !important;
+}
+
+/* ===== FORM ===== */
+.form-label {
+    font-weight: 600;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+    background-color: #1e1e1e !important;
+    color: #fff !important;
+    border-color: #555 !important;
+}
 
 
 /* NAVBAR */

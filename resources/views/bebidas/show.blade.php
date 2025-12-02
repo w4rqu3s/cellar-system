@@ -62,9 +62,11 @@
                         </form>
                     @endcan
 
-                    <a href="{{ route('bebidas.index', $bebida->lista) }}" class="btn btn-secondary">
-                        Voltar
-                    </a>
+                    @can('viewAny', App\Models\Bebida::class)    
+                        <a href="{{ route('bebidas.index', $bebida->lista) }}" class="btn btn-secondary">
+                            Voltar
+                        </a>
+                    @endcan
                 </div>
             </div>
 
