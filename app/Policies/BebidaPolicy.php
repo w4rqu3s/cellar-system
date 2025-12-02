@@ -17,7 +17,7 @@ class BebidaPolicy
 
     public function view(User $user, Bebida $bebida): bool
     {
-        return PermissionController::isAuthorized('bebidas.show');
+        return PermissionController::isAuthorized('bebidas.show') && $user->id === $bebida->user_id;
     }
 
     public function create(User $user): bool
@@ -27,16 +27,16 @@ class BebidaPolicy
 
     public function update(User $user, Bebida $bebida): bool
     {
-        return PermissionController::isAuthorized('bebidas.edit');
+        return PermissionController::isAuthorized('bebidas.edit') && $user->id === $bebida->user_id;
     }
 
     public function delete(User $user, Bebida $bebida): bool
     {
-        return PermissionController::isAuthorized('bebidas.delete');
+        return PermissionController::isAuthorized('bebidas.delete') && $user->id === $bebida->user_id;
     }
 
     public function moverParaAdega(User $user, Bebida $bebida): bool
     {
-        return PermissionController::isAuthorized('bebidas.moverParaAdega');
+        return PermissionController::isAuthorized('bebidas.moverParaAdega') && $user->id === $bebida->user_id;
     }
 }

@@ -45,10 +45,10 @@
                 <div>
                     <select name="sort" class="form-select">
                         <option value="">Ordenar por...</option>
-                        <option value="valor_asc" {{ request('sort') == 'valor_asc' ? 'selected' : '' }}>Valor ↑</option>
-                        <option value="valor_desc" {{ request('sort') == 'valor_desc' ? 'selected' : '' }}>Valor ↓</option>
-                        <option value="ano_asc" {{ request('sort') == 'ano_asc' ? 'selected' : '' }}>Ano ↑</option>
-                        <option value="ano_desc" {{ request('sort') == 'ano_desc' ? 'selected' : '' }}>Ano ↓</option>
+                        <option value="valor_asc" {{ request('sort') == 'valor_asc' ? 'selected' : '' }}>Valor (crescente)</option>
+                        <option value="valor_desc" {{ request('sort') == 'valor_desc' ? 'selected' : '' }}>Valor (decrescente)</option>
+                        <option value="ano_asc" {{ request('sort') == 'ano_asc' ? 'selected' : '' }}>Ano (crescente)</option>
+                        <option value="ano_desc" {{ request('sort') == 'ano_desc' ? 'selected' : '' }}>Ano (decrescente)</option>
                     </select>
                 </div>
 
