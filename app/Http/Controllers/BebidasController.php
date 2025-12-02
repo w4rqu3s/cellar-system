@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 
 use App\Models\Bebida;
 use App\Models\Tipo;
@@ -13,6 +14,8 @@ class BebidasController extends Controller
 {
     public function index(Request $request, string $lista)
     {
+        Gate::authorize('viewAny', Bebida::class);
+
         $query = Bebida::query()->with('tipo');
         $query->where('lista', $lista);
 
@@ -60,6 +63,8 @@ class BebidasController extends Controller
 
     public function create()
     {
+        Gate::authorize('create', Bebida::class);
+
         $tipos = Tipo::all();
 
         return view('bebidas.create', compact('tipos'));
@@ -67,6 +72,8 @@ class BebidasController extends Controller
 
     public function store(Request $request)
     {
+        Gate::authorize('create', Bebida::class);
+
         $bebida = new Bebida();
 
         $bebida->nome = $request->nome;
@@ -95,6 +102,8 @@ class BebidasController extends Controller
     {
         $bebida = Bebida::find($id);
 
+        Gate::authorize('view', $bebida);
+        
         if(isset($bebida)) {
             return view('bebidas.show', compact('bebida'));
         }
@@ -103,6 +112,8 @@ class BebidasController extends Controller
     public function edit(string $id)
     {
         $bebida = Bebida::find($id);
+
+        Gate::authorize('update', $bebida);
 
         if(isset($bebida)) {
             $tipos = Tipo::all();
@@ -113,6 +124,8 @@ class BebidasController extends Controller
     public function update(Request $request, string $id)
     {
         $bebida = Bebida::find($id);
+
+        Gate::authorize('update', $bebida);
 
         if(isset($bebida)) {
             $bebida->nome = $request->nome;
@@ -139,8 +152,10 @@ class BebidasController extends Controller
     }
 
     public function destroy(string $id)
-    {
+    {   
         $bebida = Bebida::find($id);
+
+        Gate::authorize('delete', $bebida);
 
         if(isset($bebida)) {
             $lista = $bebida->lista;
@@ -157,6 +172,8 @@ class BebidasController extends Controller
     public function moverParaAdega($id)
     {
         $bebida = Bebida::findOrFail($id);
+
+        Gate::authorize('moverParaAdega', $bebida);
 
         if(isset($bebida)) {
             $bebida->lista = 'adega';

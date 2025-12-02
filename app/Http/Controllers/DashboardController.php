@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Gate;
 
 use App\Models\Bebida;
 
@@ -10,12 +11,20 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if(Gate::denies('dashboard-view')) {
+            abort(403, 'Unauthorized action');
+        }
+
         $data = $this->getViewData();
 
         return view('dashboard.index', compact('data'));
     }
 
     public function report() {
+        if(Gate::denies('dashboard-report')) {
+            abort(403, 'Unauthorized action');
+        }
+
         $data = $this->getViewData();
 
         $pdf = Pdf::loadView('dashboard.report', compact('data'));

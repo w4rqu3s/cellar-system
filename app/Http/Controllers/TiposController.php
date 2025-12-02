@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 use App\Models\Tipo;
 
@@ -12,6 +13,8 @@ class TiposController extends Controller
 {
     public function index()
     {
+        Gate::authorize('viewAny', Tipo::class);
+
         $tipos = Tipo::all();
 
         return view('tipos.index', compact('tipos'));
@@ -19,11 +22,15 @@ class TiposController extends Controller
 
     public function create()
     {
+        Gate::authorize('create', Tipo::class);
+
         return view('tipos.create');
     }
 
     public function store(Request $request)
     {
+        Gate::authorize('create', Tipo::class);
+
         $tipo = new Tipo();
 
         $tipo->nome = $request->nome;
@@ -43,14 +50,18 @@ class TiposController extends Controller
     {
         $tipo = Tipo::find($id);
 
+        Gate::authorize('view', $tipo);
+
         if(isset($tipo)) {
             return view('tipos.show', compact('tipo'));
         }
     }
 
     public function edit(string $id)
-    {
+    {   
         $tipo = Tipo::find($id);
+
+        Gate::authorize('update', $tipo);
         
         if(isset($tipo)) {
             return view('tipos.edit', compact('tipo'));
@@ -60,6 +71,8 @@ class TiposController extends Controller
     public function update(Request $request, string $id)
     {
         $tipo = Tipo::find($id);
+
+        Gate::authorize('update', $tipo);
 
         if(isset($tipo)) {
             $tipo->nome = $request->nome;
@@ -80,6 +93,8 @@ class TiposController extends Controller
     public function destroy(string $id)
     {
         $tipo = Tipo::find($id);
+
+        Gate::authorize('delete', $tipo);
 
         if(isset($tipo)) {
 
