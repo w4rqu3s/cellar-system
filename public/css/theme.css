@@ -1,0 +1,131 @@
+/* ===========================
+   TEMA ROSA PADRÃO
+=========================== */
+
+:root {
+    --pink: #ff6b9e;
+    --pink-light: #ff8bbd;
+    --pink-bg: #ffe4ef;
+    --dark-bg: #1d1d1d;
+    --dark-card: #2a2a2a;
+    --dark-text: #e5e5e5;
+}
+
+
+
+/* NAVBAR */
+.navbar-pink {
+    background: var(--pink);
+}
+
+.navbar-pink .nav-link,
+.navbar-pink .navbar-brand {
+    color: white !important;
+    font-weight: 600;
+}
+
+/* SWITCH CENTRAL */
+.switch-btn {
+    background: white;
+    color: var(--pink);
+    border: 1px solid rgba(255,255,255,0.4);
+}
+.switch-btn.active {
+    background: var(--pink-light);
+    color: white;
+    font-weight: bold;
+}
+
+/* CARDS PADRONIZADOS */
+.card {
+    border-radius: 16px;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    transition: 0.2s;
+}
+
+/* BOTÕES PADRÃO */
+.btn-primary,
+.btn-success,
+.btn-outline-primary:hover {
+    background: var(--pink) !important;
+    border-color: var(--pink) !important;
+}
+.btn-outline-primary {
+    color: var(--pink);
+    border-color: var(--pink);
+}
+
+/* Faz botões ficarem rosa quando selecionados */
+.btn-check:checked + .btn-outline-primary {
+    background-color: #e83e8c !important; /* rosa */
+    border-color: #e83e8c !important;
+    color: #fff !important;
+}
+
+/* Hover rosa também */
+.btn-outline-primary:hover {
+    background-color: #e83e8c !important;
+    border-color: #e83e8c !important;
+    color: #fff !important;
+}
+
+
+/* ===========================
+   DARK MODE
+=========================== */
+
+.dark-mode {
+    background: var(--dark-bg) !important;
+    color: var(--dark-text) !important;
+}
+
+.dark-mode .card {
+    background: var(--dark-card) !important;
+    border-color: #444 !important;
+}
+
+.dark-mode .navbar-pink {
+    background: #b94f7b !important;
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background: #333 !important;
+    color: var(--dark-text) !important;
+    border-color: #555 !important;
+}
+
+/* Dark mode: deixa textos claros */
+.dark-mode {
+    color: #fff !important;
+}
+
+/* Corrige textos dentro de cards, tabelas, inputs etc. */
+.dark-mode .card,
+.dark-mode .form-control,
+.dark-mode .form-select,
+.dark-mode .btn,
+.dark-mode label,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode p,
+.dark-mode span,
+.dark-mode td,
+.dark-mode th {
+    color: #fff !important;
+}
+
+/* Inputs em modo escuro */
+.dark-mode .form-control,
+.dark-mode .form-select {
+    background-color: #1e1e1e !important;
+    border-color: #555 !important;
+    color: #fff !important;
+}

@@ -1,86 +1,76 @@
 @extends('templates.app')
-
 @section('title', $bebida->nome)
 
 @section('content')
 
-    <div class="container py-4">
+<div class="container" style="max-width: 850px;">
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="h3 m-0">{{ $bebida->nome }}</h1>
-            <div>
-                @can('update', $bebida)
-                <a href="{{ route('bebidas.edit', $bebida->id) }}" class="btn btn-warning me-2">Editar</a>
-                @endcan
-                @can('delete', $bebida)
-                <form action="{{ route('bebidas.destroy', $bebida->id) }}" method="POST" class="d-inline me-2">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar esta bebida?')">
-                        Deletar
-                    </button>
-                </form>
-                @endcan
-                <a href="{{ url()->previous() }}" class="btn btn-secondary">Voltar</a>
-            </div>
-        </div>
+    <div class="card shadow-sm p-4">
 
         <div class="row g-4">
-            {{-- Imagem principal --}}
-            <div class="col-12 col-md-5">
-                <div class="card shadow-sm rounded-4 border border-secondary overflow-hidden">
-                    <img src="{{ $bebida->foto ? asset('storage/' . $bebida->foto) : asset('storage/' . $bebida->tipo->foto) }}"
-                        class="w-100 h-100 object-fit-cover" alt="Foto da bebida" style="max-height:400px;">
-                </div>
+
+            <div class="col-md-5 text-center">
+                <img src="{{ $bebida->foto ? asset('storage/' . $bebida->foto) : asset('storage/' . $bebida->tipo->foto) }}"
+                     class="img-fluid rounded"
+                     style="max-height: 320px; object-fit: cover;">
             </div>
 
-            {{-- Informações detalhadas --}}
-            <div class="col-12 col-md-7">
-                <div class="card shadow-sm rounded-4 border border-secondary p-3 h-100">
+            <div class="col-md-7">
+                <h2 class="fw-bold text-pink mb-2">{{ $bebida->nome }}</h2>
 
-                    @if ($bebida->desc)
-                        <p class="text-muted mb-3">{{ $bebida->desc }}</p>
+                @if ($bebida->desc)
+                    <p class="text-muted mb-3">{{ $bebida->desc }}</p>
+                @endif
+
+                <p class="fs-5 fw-semibold">
+                    R$ {{ number_format($bebida->valor, 2, ',', '.') }}
+                </p>
+
+                <p class="text-muted mb-1"><strong>Tipo:</strong> {{ $bebida->tipo->nome }}</p>
+                <p class="text-muted mb-1"><strong>Ano:</strong> {{ $bebida->ano }}</p>
+                <p class="text-muted mb-1"><strong>Quantidade:</strong> {{ $bebida->quantidade }}</p>
+                <p class="text-muted mb-1"><strong>Capacidade:</strong>
+                    @if ($bebida->capacidade < 1)
+                        {{ $bebida->capacidade * 1000 }} ml
+                    @else
+                            {{ $bebida->capacidade }} L
                     @endif
+                </p>
 
-                    <ul class="list-unstyled mb-3">
-                        <li><span class="fw-semibold">Tipo:</span> {{ $bebida->tipo->nome }}</li>
-                        <li><span class="fw-semibold">Ano:</span> {{ $bebida->ano }}</li>
-                        <li><span class="fw-semibold">Quantidade:</span> {{ $bebida->quantidade }}</li>
-                        <li><span class="fw-semibold">
-                                Capacidade:
-                            </span>
-                            @if ($bebida->capacidade < 1)
-                                {{ $bebida->capacidade * 1000 }} ml
-                            @else
-                                {{ $bebida->capacidade }} L
-                            @endif
-                        </li>
-                        <li><span class="fw-semibold">Valor:</span> R$ {{ number_format($bebida->valor, 2, ',', '.') }}
-                        </li>
-                        <li><span class="fw-semibold">Lista:</span>
-                            {{ ucfirst($bebida->lista ?? '-') }}
-                        </li>
-                    </ul>
 
-                    @can('viewAny', App\Models\Bebida::class)
-                    <a href="{{ route('bebidas.index', $bebida->lista) }}" class="btn btn-outline-primary mt-3">
-                        Voltar para lista
-                    </a>
+                <div class="d-flex gap-2 mt-4">
+                    @can('update', $bebida)    
+                        <a href="{{ route('bebidas.edit', $bebida->id) }}" class="btn btn-primary">
+                            Editar
+                        </a>
                     @endcan
-                    @if ($bebida->lista == 'desejos')
-                        @can('moverParaAdega', $bebida)
-                        <form action="{{ route('bebidas.moverParaAdega', $bebida->id) }}" method="POST"
-                            class="d-inline">
-                            @csrf
-                            @method('PATCH')
-                            <button class="btn btn-outline-primary mt-3">Adicionar à Adega</button>
+
+                    @can('moverParaAdega', $bebida)
+                        @if ($bebida->lista === "desejos")    
+                            <a href="{{ route('bebidas.moverParaAdega', $bebida->id) }}" class="btn btn-warning">
+                                Mover à Adega
+                            </a>
+                        @endif
+                    @endcan
+                    
+                    @can('delete', $bebida)
+                        <form action="{{ route('bebidas.destroy', $bebida->id) }}" method="POST">
+                            @csrf @method('DELETE')
+                            <button class="btn btn-danger">
+                                Excluir
+                            </button>
                         </form>
-                        @endcan
-                    @endif
+                    @endcan
+
+                    <a href="{{ route('bebidas.index', $bebida->lista) }}" class="btn btn-secondary">
+                        Voltar
+                    </a>
                 </div>
             </div>
+
         </div>
 
     </div>
 
+</div>
 @endsection
