@@ -9,11 +9,8 @@
 
     {{-- Bootstrap --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    {{-- Ícones (opcional mas recomendado) --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
-
-    {{-- Tema customizado --}}
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 
 </head>
@@ -24,20 +21,6 @@
     <main class="py-4">
         @yield('content')
     </main>
-
-    {{-- Dark Mode Script --}}
-    <script>
-        const body = document.getElementById('body');
-
-        function toggleDarkMode() {
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('dark-mode', body.classList.contains('dark-mode'));
-        }
-
-        if (localStorage.getItem('dark-mode') === 'true') {
-            body.classList.add('dark-mode');
-        }
-    </script>
 
 </body>
 </html>
