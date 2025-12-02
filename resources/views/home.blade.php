@@ -56,7 +56,7 @@
                 <div class="card-body text-center">
                     <h4 class="fw-semibold mb-3">Admnistração de Usuários</h4>
                     <p class="text-muted">Gerencie os usuários da plataforma.</p>
-                    <a href="{{ route('tipos.index') }}" class="btn btn-primary btn-lg w-100 mt-3">Gerenciar</a>
+                    <a href="{{ route('usuarios.index') }}" class="btn btn-primary btn-lg w-100 mt-3">Gerenciar</a>
                 </div>
             </div>
         </div>

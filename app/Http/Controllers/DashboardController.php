@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Bebida;
 
@@ -33,9 +34,11 @@ class DashboardController extends Controller
     }
 
     private function getViewData() {
+        $user = Auth::user();
+
         $data = ['valorTotal' => 0, 'litrosTotal' => 0];
 
-        $bebidas = Bebida::where('lista', 'adega')->with('tipo')->get();
+        $bebidas = Bebida::where('user_id', $user->id)->where('lista', 'adega')->with('tipo')->get();
 
         foreach($bebidas as $bebida) {
             $data['valorTotal'] += ($bebida->valor * $bebida->quantidade);

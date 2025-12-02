@@ -39,6 +39,8 @@ class UsersController extends Controller
             // Mail::to(user->email)->send(new TestEmail($data));
 
             $user->delete();
+
+            return redirect()->route('usuarios.index');
         }
     }
 }
