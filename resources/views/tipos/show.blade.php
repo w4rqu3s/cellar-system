@@ -9,7 +9,10 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="h3 m-0">{{ $tipo->nome }}</h1>
             <div>
+                @can('update', $tipo)
                 <a href="{{ route('tipos.edit', $tipo->id) }}" class="btn btn-warning me-2">Editar</a>
+                @endcan
+                @can('delete', $tipo)    
                 <form action="{{ route('tipos.destroy', $tipo->id) }}" method="POST" class="d-inline me-2">
                     @csrf
                     @method('DELETE')
@@ -17,6 +20,7 @@
                         Deletar
                     </button>
                 </form>
+                @endcan
                 <a href="{{ url()->previous() }}" class="btn btn-secondary">Voltar</a>
             </div>
         </div>
@@ -44,10 +48,11 @@
                         <li><span class="fw-semibold">Última Edição:</span> {{ $tipo->updated_at }}</li>
                     </ul>
 
-                    {{-- Botão adicional ou ações --}}
-                    <a href="{{ route('tipos.index') }}" class="btn btn-outline-primary mt-3">
-                        Voltar para lista
-                    </a>
+                   @can('viewAny', App\Models\Tipo::class)
+                   <a href="{{ route('tipos.index') }}" class="btn btn-outline-primary mt-3">
+                       Voltar para lista
+                   </a>
+                   @endcan
                 </div>
             </div>
         </div>

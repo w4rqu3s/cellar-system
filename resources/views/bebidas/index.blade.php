@@ -15,9 +15,11 @@
                 @endif
             </h1>
 
+            @can('create', App\Models\Bebida::class)    
             <a href="{{ route('bebidas.create') }}" class="btn btn-primary">
                 Adicionar Garrafa
             </a>
+            @endcan
         </div>
 
         <div class="row mb-4 g-2 align-items-end">
@@ -91,11 +93,13 @@
 
                         </div>
 
+                        @can('view', $bebida)
                         <div class="card-footer bg-white border-0 pb-3">
                             <a href="{{ route('bebidas.show', $bebida->id) }}" class="btn btn-outline-primary w-100">
                                 Detalhes
                             </a>
                         </div>
+                        @endcan
 
                     </div>
                 </div>

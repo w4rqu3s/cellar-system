@@ -9,7 +9,7 @@
 
         <div class="card">
             <div class="card-body">
-
+                @can('create', App\Models\Bebida::class)
                 <form action="{{ route('bebidas.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
@@ -22,7 +22,7 @@
                     </a>
 
                 </form>
-
+                @endcan
             </div>
         </div>
     </div>

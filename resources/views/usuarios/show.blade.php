@@ -23,10 +23,11 @@
                 <li><span class="fw-semibold">Última Edição:</span> {{ $user->updated_at }}</li>
             </ul>
 
-            {{-- Botão adicional ou ações --}}
+            @can('viewAny', App\Models\User::class)
             <a href="{{ route('usuarios.index') }}" class="btn btn-outline-primary mt-3">
                 Voltar para lista
             </a>
+            @endcan
         </div>
 
 

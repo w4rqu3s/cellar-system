@@ -28,6 +28,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
 
+                            @can('view', $user)
                             <td class="text-center">
                                 <a 
                                     href="{{ route('usuarios.show', $user->id) }}" 
@@ -36,6 +37,7 @@
                                     Acessar
                                 </a>
                             </td>
+                            @endcan
                         </tr>
 
                     @empty

@@ -49,15 +49,15 @@ class PermissionsSeeder extends Seeder
             ["role_id" => 2, "resource_id" => 8, "permission" => 1],    // usuarios.show
             ["role_id" => 2, "resource_id" => 9, "permission" => 1],    // usuarios.ban
 
-            ["role_id" => 2, "resource_id" => 10, "permission" => 0],    // bebidas.index
-            ["role_id" => 2, "resource_id" => 11, "permission" => 0],    // bebidas.show
-            ["role_id" => 2, "resource_id" => 12, "permission" => 0],    // bebidas.create
-            ["role_id" => 2, "resource_id" => 13, "permission" => 0],    // bebidas.edit
-            ["role_id" => 2, "resource_id" => 14, "permission" => 0],    // bebidas.moverParaAdega
-            ["role_id" => 2, "resource_id" => 15, "permission" => 0],    // bebidas.delete
+            ["role_id" => 2, "resource_id" => 10, "permission" => 1],    // bebidas.index
+            ["role_id" => 2, "resource_id" => 11, "permission" => 1],    // bebidas.show
+            ["role_id" => 2, "resource_id" => 12, "permission" => 1],    // bebidas.create
+            ["role_id" => 2, "resource_id" => 13, "permission" => 1],    // bebidas.edit
+            ["role_id" => 2, "resource_id" => 14, "permission" => 1],    // bebidas.moverParaAdega
+            ["role_id" => 2, "resource_id" => 15, "permission" => 1],    // bebidas.delete
 
-            ["role_id" => 2, "resource_id" => 16, "permission" => 0],    //  dashboard.index
-            ["role_id" => 2, "resource_id" => 17, "permission" => 0],    //  dashboard.report
+            ["role_id" => 2, "resource_id" => 16, "permission" => 1],    //  dashboard.index
+            ["role_id" => 2, "resource_id" => 17, "permission" => 1],    //  dashboard.report
         ];
 
     DB::table('permissions')->insert($data);

@@ -8,6 +8,7 @@
     <div class="card">
         <div class="card-body">
 
+            @can('update', $tipo)
             <form action="{{ route('tipos.update', $tipo->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -22,6 +23,7 @@
                 </a>
 
             </form>
+            @endcan
 
         </div>
     </div>

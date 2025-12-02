@@ -7,9 +7,11 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3">Tipos</h1>
 
+        @can('create', App\Models\Tipo::class)
         <a href="{{ route('tipos.create') }}" class="btn btn-primary">
             Criar Tipo
         </a>
+        @endcan
     </div>
 
     <div class="card">
@@ -28,6 +30,7 @@
                         <tr>
                             <td>{{ $tipo->nome }}</td>
 
+                            @can('view', $tipo)    
                             <td class="text-center">
                                 <a 
                                     href="{{ route('tipos.show', $tipo->id) }}" 
@@ -36,6 +39,7 @@
                                     Acessar
                                 </a>
                             </td>
+                            @endcan
                         </tr>
 
                     @empty

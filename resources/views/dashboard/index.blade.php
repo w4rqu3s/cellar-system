@@ -11,7 +11,9 @@
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="mb-4 fw-bold">🎛️ Dashboard da Adega</h1>
+            @can('dashboard-report')
             <a href="{{ route('dashboard.report') }}" class="btn btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+            @endcan
         </div>
 
         {{-- Métricas principais --}}

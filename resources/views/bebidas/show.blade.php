@@ -9,7 +9,10 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="h3 m-0">{{ $bebida->nome }}</h1>
             <div>
+                @can('update', $bebida)
                 <a href="{{ route('bebidas.edit', $bebida->id) }}" class="btn btn-warning me-2">Editar</a>
+                @endcan
+                @can('delete', $bebida)
                 <form action="{{ route('bebidas.destroy', $bebida->id) }}" method="POST" class="d-inline me-2">
                     @csrf
                     @method('DELETE')
@@ -17,6 +20,7 @@
                         Deletar
                     </button>
                 </form>
+                @endcan
                 <a href="{{ url()->previous() }}" class="btn btn-secondary">Voltar</a>
             </div>
         </div>
@@ -58,19 +62,20 @@
                         </li>
                     </ul>
 
-                    {{-- Botão adicional ou ações --}}
+                    @can('viewAny', App\Models\Bebida::class)
                     <a href="{{ route('bebidas.index', $bebida->lista) }}" class="btn btn-outline-primary mt-3">
                         Voltar para lista
                     </a>
+                    @endcan
                     @if ($bebida->lista == 'desejos')
-                        @if ($bebida->lista == 'desejos')
-                            <form action="{{ route('bebidas.moverParaAdega', $bebida->id) }}" method="POST"
-                                class="d-inline">
-                                @csrf
-                                @method('PATCH')
-                                <button class="btn btn-outline-primary mt-3">Adicionar à Adega</button>
-                            </form>
-                        @endif
+                        @can('moverParaAdega', $bebida)
+                        <form action="{{ route('bebidas.moverParaAdega', $bebida->id) }}" method="POST"
+                            class="d-inline">
+                            @csrf
+                            @method('PATCH')
+                            <button class="btn btn-outline-primary mt-3">Adicionar à Adega</button>
+                        </form>
+                        @endcan
                     @endif
                 </div>
             </div>

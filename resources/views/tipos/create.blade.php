@@ -7,7 +7,7 @@
 
     <div class="card">
         <div class="card-body">
-
+            @can('create', App\Models\Tipo::class)
             <form action="{{ route('tipos.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
@@ -21,6 +21,7 @@
                 </a>
 
             </form>
+            @endcan
 
         </div>
     </div>

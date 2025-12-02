@@ -8,6 +8,7 @@
             </li>
         </ul>
 
+        @can('viewAny', App\Models\Bebida::class)
         {{-- Switch centralizado --}}
         <div class="container">
             <div class="position-absolute start-50 translate-middle-x">
@@ -22,17 +23,24 @@
                     </a>
                 </div>
             </div>
+            @can('dashboard-view')
             <a href="{{ route('dashboard.index') }}" class="btn">Dashboard</a>
+            @endcan
         </div>
+        @endcan
 
         {{-- Bloco direito: outros links --}}
         <ul class="navbar-nav ms-auto">
+            @can('viewAny', App\Models\Tipo::class)
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('tipos.index') }}">Tipos</a>
             </li>
+            @endcan
+            @can('viewAny', App\Models\User::class)    
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('usuarios.index') }}">Usuários</a>
             </li>
+            @endcan
         </ul>
 
     </div>
