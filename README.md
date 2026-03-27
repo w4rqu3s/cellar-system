@@ -21,6 +21,13 @@ O sistema tem como objetivo permitir o gerenciamento de uma adega de bebidas, pe
 * Criar, editar, listar e deletar tipos
 * Listagem e banimento de contas  
 
+## 🖼️ Imagens
+
+<img width="1868" height="884" alt="adega" src="https://github.com/user-attachments/assets/e9d68015-5040-4edf-a0e0-52bb6a054563" />
+<img width="1868" height="884" alt="dashboard" src="https://github.com/user-attachments/assets/cf782c82-2c59-493c-a538-4c1317815725" />
+<img width="1868" height="884" alt="pdf" src="https://github.com/user-attachments/assets/8ac25e2f-a7e3-410a-bfe7-adfab5900616" />
+<img width="1868" height="884" alt="banir" src="https://github.com/user-attachments/assets/cfdc275a-d120-417d-a42d-f3d0864fc9a0" />
+
 
 ## 🧱 Arquitetura do Projeto
 
