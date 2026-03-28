@@ -106,8 +106,8 @@ php artisan serve
 
 ### Login de ADM
 
-* *Email:* admin@gmail.com
-* *Senha:* @1234@5678
+* **Email:** admin@gmail.com
+* **Senha:** @1234@5678
 
 ## 📌 Observações
 
