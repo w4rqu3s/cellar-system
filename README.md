@@ -68,7 +68,7 @@ composer install
 npm install
 ```
 
-#### 3 | Configurar a aplicação
+#### 3 | Configure a aplicação
 
 ```bash id="8g2x9k"
 # Cria o arquivo de env
@@ -79,13 +79,13 @@ copy .env.example .env    # WINDOWS
 php artisan key:generate
 ```
 
-#### 4 | Criar o link de storage
+#### 4 | Crie o link de storage
 
 ```bash id="8g2x9k"
 php artisan storage:link
 ```
 
-#### 5 | Inicializar o banco de dados
+#### 5 | Inicialize o banco de dados
 
 ```bash id="8g2x9k"
 # Cria as tabelas e popula com as seeders
@@ -98,7 +98,7 @@ php artisan migrate --seed --no-interaction --force
 npm run build
 ```
 
-#### 7 | Iniciar a aplicação
+#### 7 | Inicie a aplicação
 
 ```bash id="8g2x9k"
 php artisan serve
